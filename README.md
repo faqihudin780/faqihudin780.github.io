@@ -3,24 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistem Pembelajaran - SMPN 1 Seputih Surabaya</title>
+    <title>Sistem Informatika Terintegrasi - SMPN 1 Seputih Surabaya</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"></script>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        :root {
-            --primary: #4f46e5;
-            --primary-dark: #4338ca;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --gray: #6b7280;
-            --light: #f8fafc;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
         }
 
         body {
@@ -37,7 +28,7 @@
 
         .card {
             background: white;
-            border-radius: 16px;
+            border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             padding: 25px;
             margin-bottom: 25px;
@@ -55,43 +46,39 @@
             align-items: center;
             margin-bottom: 20px;
             padding-bottom: 15px;
-            border-bottom: 2px solid #f1f5f9;
+            border-bottom: 1px solid #eee;
         }
 
         .card-title {
             font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
+            font-weight: 600;
+            color: #4f46e5;
         }
 
         .btn {
-            padding: 12px 24px;
+            padding: 10px 20px;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 500;
             display: inline-flex;
             align-items: center;
             gap: 8px;
             transition: all 0.3s ease;
-            font-size: 0.95rem;
         }
 
         .btn-primary {
-            background: var(--primary);
+            background: #4f46e5;
             color: white;
         }
 
         .btn-primary:hover {
-            background: var(--primary-dark);
+            background: #4338ca;
             transform: translateY(-2px);
         }
 
         .btn-success {
-            background: var(--success);
+            background: #10b981;
             color: white;
         }
 
@@ -101,7 +88,7 @@
         }
 
         .btn-warning {
-            background: var(--warning);
+            background: #f59e0b;
             color: white;
         }
 
@@ -111,7 +98,7 @@
         }
 
         .btn-danger {
-            background: var(--danger);
+            background: #ef4444;
             color: white;
         }
 
@@ -121,25 +108,13 @@
         }
 
         .btn-secondary {
-            background: var(--gray);
+            background: #6b7280;
             color: white;
         }
 
         .btn-secondary:hover {
             background: #4b5563;
             transform: translateY(-2px);
-        }
-
-        .sync-indicator {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background: #f0f9ff;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            color: var(--primary);
-            border: 1px solid #bfdbfe;
         }
 
         .form-group {
@@ -149,31 +124,31 @@
         .form-label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 600;
+            font-weight: 500;
             color: #374151;
         }
 
         .form-control {
             width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #e5e7eb;
-            border-radius: 10px;
+            padding: 12px 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
             font-size: 1rem;
-            transition: all 0.3s ease;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .form-control:focus {
             outline: none;
-            border-color: var(--primary);
+            border-color: #4f46e5;
             box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
         }
 
         .badge {
             display: inline-block;
-            padding: 6px 12px;
+            padding: 5px 10px;
             border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.85rem;
+            font-weight: 500;
         }
 
         .badge.success {
@@ -191,48 +166,50 @@
             color: #991b1b;
         }
 
+        .badge.gray {
+            background: #f3f4f6;
+            color: #6b7280;
+        }
+
+        .badge.blue {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
         .tab-container {
             display: flex;
-            border-bottom: 2px solid #e5e7eb;
-            margin-bottom: 25px;
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 20px;
             overflow-x: auto;
-            background: white;
-            border-radius: 12px 12px 0 0;
-            padding: 0 10px;
         }
 
         .tab-btn {
-            padding: 15px 25px;
+            padding: 12px 20px;
             background: none;
             border: none;
             cursor: pointer;
-            font-weight: 600;
-            color: var(--gray);
-            border-bottom: 3px solid transparent;
+            font-weight: 500;
+            color: #6b7280;
+            border-bottom: 2px solid transparent;
             transition: all 0.3s ease;
             white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
         .tab-btn.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
+            color: #4f46e5;
+            border-bottom-color: #4f46e5;
+        }
+
+        .tab-btn:hover {
+            color: #4f46e5;
         }
 
         .tab-content {
             display: none;
-            animation: fadeIn 0.5s ease;
         }
 
         .tab-content.active {
             display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .stats-grid {
@@ -244,49 +221,52 @@
 
         .stat-card {
             background: white;
-            border-radius: 16px;
-            padding: 25px;
+            border-radius: 12px;
+            padding: 20px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             text-align: center;
             transition: transform 0.3s ease;
-            border-top: 4px solid var(--primary);
         }
 
         .stat-card:hover {
             transform: translateY(-5px);
         }
 
+        .stat-card.blue {
+            border-top: 4px solid #4f46e5;
+        }
+
         .stat-card.green {
-            border-top-color: var(--success);
+            border-top: 4px solid #10b981;
         }
 
         .stat-card.orange {
-            border-top-color: var(--warning);
+            border-top: 4px solid #f59e0b;
         }
 
         .stat-card.purple {
-            border-top-color: #8b5cf6;
+            border-top: 4px solid #8b5cf6;
         }
 
         .stat-card .label {
             font-size: 0.9rem;
-            color: var(--gray);
+            color: #6b7280;
             margin-bottom: 8px;
         }
 
         .stat-card .value {
-            font-size: 2.2rem;
-            font-weight: 800;
+            font-size: 2rem;
+            font-weight: 700;
             color: #1f2937;
         }
 
         .materi-item {
             background: white;
-            border-radius: 12px;
+            border-radius: 10px;
             padding: 20px;
             margin-bottom: 15px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            border-left: 4px solid var(--primary);
+            border-left: 4px solid #4f46e5;
             transition: all 0.3s ease;
         }
 
@@ -300,38 +280,47 @@
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 10px;
-            gap: 15px;
         }
 
         .materi-actions {
             display: flex;
             gap: 10px;
-            flex-wrap: wrap;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 10px 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #10b981;
+            border-radius: 4px;
+            transition: width 0.5s ease;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
 
         th, td {
-            padding: 15px;
+            padding: 12px 15px;
             text-align: left;
             border-bottom: 1px solid #e5e7eb;
         }
 
         th {
-            background: #f8fafc;
-            font-weight: 700;
+            background: #f9fafb;
+            font-weight: 600;
             color: #374151;
         }
 
         tr:hover {
-            background: #f8fafc;
+            background: #f9fafb;
         }
 
         .login-container {
@@ -344,7 +333,7 @@
 
         .login-card {
             background: white;
-            border-radius: 20px;
+            border-radius: 16px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
             padding: 40px;
             width: 100%;
@@ -353,115 +342,131 @@
         }
 
         .login-title {
-            font-size: 2rem;
-            font-weight: 800;
+            font-size: 1.8rem;
+            font-weight: 700;
             margin-bottom: 10px;
-            background: linear-gradient(135deg, var(--primary), #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #1f2937;
         }
 
         .login-subtitle {
-            color: var(--gray);
+            color: #6b7280;
             margin-bottom: 30px;
-            font-size: 1.1rem;
         }
 
         .role-selector {
             display: flex;
             margin-bottom: 25px;
-            border-radius: 12px;
+            border-radius: 10px;
             overflow: hidden;
-            border: 2px solid #e5e7eb;
+            border: 1px solid #d1d5db;
         }
 
         .role-btn {
             flex: 1;
-            padding: 15px;
+            padding: 12px;
             background: white;
             border: none;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 500;
             transition: all 0.3s ease;
-            font-size: 1rem;
         }
 
         .role-btn.active {
-            background: var(--primary);
+            background: #4f46e5;
             color: white;
         }
 
         .demo-info {
             background: #f0f9ff;
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 25px;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
             text-align: left;
             font-size: 0.9rem;
             color: #0369a1;
             border-left: 4px solid #0ea5e9;
         }
 
+        .file-preview {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f9fafb;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .file-info {
+            flex: 1;
+        }
+
+        .file-name {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .file-size {
+            font-size: 0.85rem;
+            color: #6b7280;
+        }
+
         .share-section {
-            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
-            border-radius: 16px;
-            padding: 25px;
+            background: #f0f9ff;
+            border-radius: 10px;
+            padding: 20px;
             margin-top: 25px;
-            border: 2px solid #bfdbfe;
         }
 
         .share-input-group {
             display: flex;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .share-input {
             flex: 1;
-            padding: 14px 16px;
-            border: 2px solid #d1d5db;
-            border-radius: 10px;
+            padding: 12px 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
             font-size: 0.9rem;
-            background: white;
         }
 
         .copy-btn {
-            background: var(--primary);
+            background: #4f46e5;
             color: white;
             border: none;
-            border-radius: 10px;
-            padding: 0 20px;
+            border-radius: 8px;
+            padding: 0 15px;
             cursor: pointer;
             transition: all 0.3s ease;
-            font-weight: 600;
         }
 
         .copy-btn:hover {
-            background: var(--primary-dark);
+            background: #4338ca;
         }
 
         .copy-btn.copied {
-            background: var(--success);
+            background: #10b981;
         }
 
         .share-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            display: flex;
+            gap: 10px;
         }
 
         .share-btn {
-            padding: 14px;
+            flex: 1;
+            padding: 10px;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 500;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             transition: all 0.3s ease;
-            font-size: 1rem;
         }
 
         .whatsapp-btn {
@@ -471,7 +476,6 @@
 
         .whatsapp-btn:hover {
             background: #128c7e;
-            transform: translateY(-2px);
         }
 
         .telegram-btn {
@@ -481,238 +485,91 @@
 
         .telegram-btn:hover {
             background: #006699;
-            transform: translateY(-2px);
-        }
-
-        .status-buttons {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .status-btn {
-            padding: 16px;
-            border: 2px solid #e5e7eb;
-            border-radius: 12px;
-            background: white;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .status-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .status-btn:hover {
-            border-color: var(--primary);
-        }
-
-        .notification {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 16px 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border-left: 4px solid var(--success);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            z-index: 1000;
-            animation: slideIn 0.3s ease;
-            max-width: 400px;
-        }
-
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
-        }
-
-        .notification.success {
-            border-left-color: var(--success);
-        }
-
-        .notification.warning {
-            border-left-color: var(--warning);
-        }
-
-        .notification.error {
-            border-left-color: var(--danger);
         }
 
         .modal {
             display: none;
             position: fixed;
-            z-index: 1000;
-            left: 0;
             top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
         }
 
         .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 25px;
-            border-radius: 16px;
+            background: white;
+            border-radius: 12px;
             width: 90%;
             max-width: 600px;
-            max-height: 80vh;
+            max-height: 90vh;
             overflow-y: auto;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
         }
 
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
             cursor: pointer;
+            color: #6b7280;
+            transition: color 0.3s ease;
         }
 
-        .close:hover {
-            color: var(--danger);
+        .modal-close:hover {
+            color: #374151;
         }
 
-        .file-upload {
-            border: 2px dashed #d1d5db;
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-            margin: 15px 0;
-            background: #f8fafc;
+        .modal-body {
+            padding: 20px;
+        }
+
+        .status-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .status-btn {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            font-weight: 500;
             transition: all 0.3s ease;
         }
 
-        .file-upload:hover {
-            border-color: var(--primary);
-            background: #f0f9ff;
-        }
-
-        .file-upload input {
-            display: none;
-        }
-
-        .file-upload-label {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            color: var(--gray);
-        }
-
-        .file-upload-label i {
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        .file-preview {
-            margin-top: 15px;
-            padding: 15px;
-            background: white;
-            border-radius: 10px;
-            border: 1px solid #e5e7eb;
-        }
-
-        .file-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px;
-            background: #f8fafc;
-            border-radius: 8px;
-            margin-bottom: 8px;
-        }
-
-        .file-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .file-icon {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--primary);
+        .status-btn.active {
+            background: #4f46e5;
             color: white;
+            border-color: #4f46e5;
+        }
+
+        .nilai-input {
+            width: 70px;
+            padding: 8px;
+            border: 1px solid #d1d5db;
             border-radius: 6px;
-        }
-
-        .file-details {
-            flex: 1;
-        }
-
-        .file-name {
-            font-weight: 600;
-            margin-bottom: 2px;
-        }
-
-        .file-size {
-            font-size: 0.8rem;
-            color: var(--gray);
-        }
-
-        .file-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .security-warning {
-            background: #fef3c7;
-            border: 1px solid #fcd34d;
-            border-radius: 10px;
-            padding: 15px;
-            margin: 15px 0;
-            color: #92400e;
-        }
-
-        .preview-container {
-            margin-top: 20px;
-            border: 1px solid #e5e7eb;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        .preview-header {
-            background: #f8fafc;
-            padding: 15px;
-            border-bottom: 1px solid #e5e7eb;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .preview-content {
-            padding: 20px;
-            max-height: 400px;
-            overflow-y: auto;
-        }
-
-        .pdf-preview {
-            width: 100%;
-            height: 400px;
-            border: none;
-        }
-
-        .image-preview {
-            max-width: 100%;
-            max-height: 300px;
-            display: block;
-            margin: 0 auto;
+            text-align: center;
         }
 
         @media (max-width: 768px) {
@@ -723,7 +580,7 @@
             
             .materi-actions {
                 width: 100%;
-                justify-content: flex-start;
+                justify-content: flex-end;
             }
             
             .share-input-group {
@@ -731,107 +588,66 @@
             }
             
             .share-buttons {
-                grid-template-columns: 1fr;
+                flex-direction: column;
             }
             
             .stats-grid {
                 grid-template-columns: 1fr;
             }
-            
-            .status-buttons {
-                grid-template-columns: 1fr;
-            }
-            
-            .tab-btn {
-                padding: 12px 15px;
-                font-size: 0.9rem;
-            }
         }
     </style>
 </head>
 <body>
-    <div id="notificationContainer"></div>
-
-    <div id="filePreviewModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeFilePreview()">&times;</span>
-            <div id="filePreviewContent"></div>
-        </div>
-    </div>
-
+    <!-- Halaman Login -->
     <div id="loginPage" class="login-container">
         <div class="login-card">
             <h1 class="login-title">SMPN 1 Seputih Surabaya</h1>
-            <p class="login-subtitle">Sistem Pembelajaran Terintegrasi</p>
+            <p class="login-subtitle">Sistem Informatika Terintegrasi</p>
             
             <div class="role-selector">
-                <button class="role-btn active" onclick="selectRole('siswa')">
-                    <i class="fas fa-user-graduate"></i> Siswa
-                </button>
-                <button class="role-btn" onclick="selectRole('guru')">
-                    <i class="fas fa-chalkboard-teacher"></i> Guru
-                </button>
+                <button class="role-btn active" onclick="selectRole('siswa')">Siswa</button>
+                <button class="role-btn" onclick="selectRole('guru')">Guru</button>
             </div>
             
             <form id="loginForm" onsubmit="handleLogin(event)">
                 <div class="form-group">
-                    <label for="username" class="form-label" id="usernameLabel">
-                        <i class="fas fa-id-card"></i> NIS
-                    </label>
+                    <label for="username" class="form-label" id="usernameLabel">NIS</label>
                     <input type="text" id="username" class="form-control" placeholder="Masukkan NIS" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="password" class="form-label">
-                        <i class="fas fa-lock"></i> Password
-                    </label>
+                    <label for="password" class="form-label">Password</label>
                     <input type="password" id="password" class="form-control" placeholder="Masukkan password" required>
-                </div>
-
-                <div id="guruSecurityWarning" class="security-warning" style="display: none;">
-                    <i class="fas fa-shield-alt"></i>
-                    <strong>Akses Terbatas:</strong> Login guru hanya untuk staf pengajar yang berwenang. 
                 </div>
                 
                 <button type="submit" class="btn btn-primary" style="width: 100%;">
-                    <i class="fas fa-sign-in-alt"></i> Masuk ke Sistem
+                    <i class="fas fa-sign-in-alt"></i> Masuk
                 </button>
             </form>
             
             <div class="demo-info" id="demoInfo">
-                <strong><i class="fas fa-info-circle"></i> Demo Siswa:</strong><br>
+                <strong>Demo Siswa:</strong><br>
                 NIS: <strong>8103</strong><br>
                 Password: <strong>8103</strong>
-            </div>
-
-            <div class="security-warning" style="margin-top: 20px;">
-                <i class="fas fa-exclamation-triangle"></i>
-                <strong>Perhatian:</strong> Jangan bagikan kredensial login Anda kepada siapapun.
             </div>
         </div>
     </div>
     
+    <!-- Dashboard Siswa -->
     <div id="dashboardSiswa" class="container" style="display: none;">
         <div class="card">
             <div class="card-header">
+                <h1 class="card-title">Dashboard Siswa</h1>
                 <div>
-                    <h1 class="card-title">
-                        <i class="fas fa-user-graduate"></i> Dashboard Siswa
-                    </h1>
-                    <div id="siswaInfo" style="color: var(--gray); margin-top: 5px;"></div>
-                </div>
-                <div style="display: flex; align-items: center; gap: 15px;">
-                    <div id="syncStatusSiswa" class="sync-indicator">
-                        <i class="fas fa-sync"></i> Terhubung
-                    </div>
-                    <button class="btn btn-secondary" onclick="logout()">
+                    <span id="siswaInfo"></span>
+                    <button class="btn btn-secondary" onclick="logout()" style="margin-left: 15px;">
                         <i class="fas fa-sign-out-alt"></i> Keluar
                     </button>
                 </div>
             </div>
             
             <div class="stats-grid">
-                <div class="stat-card">
+                <div class="stat-card blue">
                     <div class="label">Kehadiran</div>
                     <div class="value" id="siswaKehadiran">0%</div>
                 </div>
@@ -846,36 +662,24 @@
             </div>
             
             <div class="tab-container">
-                <button class="tab-btn active" onclick="switchTab('siswa', 'home')">
-                    <i class="fas fa-home"></i> Beranda
-                </button>
-                <button class="tab-btn" onclick="switchTab('siswa', 'absensi')">
-                    <i class="fas fa-calendar-check"></i> Absensi
-                </button>
-                <button class="tab-btn" onclick="switchTab('siswa', 'tugas')">
-                    <i class="fas fa-tasks"></i> Tugas
-                </button>
-                <button class="tab-btn" onclick="switchTab('siswa', 'materi')">
-                    <i class="fas fa-book"></i> Materi
-                </button>
-                <button class="tab-btn" onclick="switchTab('siswa', 'nilai')">
-                    <i class="fas fa-chart-line"></i> Nilai
-                </button>
+                <button class="tab-btn active" onclick="switchTab('siswa', 'home')">Beranda</button>
+                <button class="tab-btn" onclick="switchTab('siswa', 'absensi')">Absensi</button>
+                <button class="tab-btn" onclick="switchTab('siswa', 'tugas')">Tugas</button>
+                <button class="tab-btn" onclick="switchTab('siswa', 'materi')">Materi</button>
+                <button class="tab-btn" onclick="switchTab('siswa', 'nilai')">Nilai</button>
             </div>
             
+            <!-- Tab Beranda Siswa -->
             <div id="siswa-home" class="tab-content active">
                 <div class="card">
-                    <h2 style="margin-bottom: 15px; color: var(--primary);">
-                        <i class="fas fa-graduation-cap"></i> Selamat Datang!
-                    </h2>
-                    <p style="margin-bottom: 20px; color: var(--gray); line-height: 1.6;">
-                        Selamat datang di Sistem Pembelajaran Terintegrasi SMPN 1 Seputih Surabaya. 
+                    <h2 style="margin-bottom: 15px;">Selamat Datang!</h2>
+                    <p style="margin-bottom: 20px; color: #6b7280;">
+                        Selamat datang di Sistem Informatika Terintegrasi SMPN 1 Seputih Surabaya. 
+                        Gunakan menu di atas untuk mengakses berbagai fitur pembelajaran.
                     </p>
                     
                     <div class="share-section">
-                        <h3 style="margin-bottom: 15px; color: var(--primary);">
-                            <i class="fas fa-share-alt"></i> Bagikan Sistem
-                        </h3>
+                        <h3 style="margin-bottom: 15px;">Bagikan Data Pembelajaran</h3>
                         <div class="share-input-group">
                             <input type="text" id="shareUrl" class="share-input" readonly>
                             <button class="copy-btn" onclick="copyShareUrl()">
@@ -894,23 +698,18 @@
                 </div>
             </div>
             
+            <!-- Tab Absensi Siswa -->
             <div id="siswa-absensi" class="tab-content">
                 <div class="card">
-                    <h2 style="margin-bottom: 20px; color: var(--primary);">
-                        <i class="fas fa-calendar-check"></i> Absensi Harian
-                    </h2>
+                    <h2 style="margin-bottom: 20px;">Absensi Harian</h2>
                     
                     <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-calendar"></i> Tanggal
-                        </label>
+                        <label class="form-label">Tanggal</label>
                         <input type="date" id="siswaAbsensiDate" class="form-control">
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-user-check"></i> Status Kehadiran
-                        </label>
+                        <label class="form-label">Status Kehadiran</label>
                         <div class="status-buttons">
                             <button class="status-btn" onclick="selectStatus('present')">
                                 <i class="fas fa-check-circle"></i> Hadir
@@ -925,62 +724,54 @@
                     </div>
                     
                     <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-sticky-note"></i> Keterangan
-                        </label>
-                        <textarea id="siswaAbsensiNote" class="form-control" rows="3" placeholder="Tambahkan keterangan..."></textarea>
+                        <label class="form-label">Keterangan (Opsional)</label>
+                        <textarea id="siswaAbsensiNote" class="form-control" rows="3" placeholder="Tambahkan keterangan jika diperlukan..."></textarea>
                     </div>
                     
-                    <button class="btn btn-primary" onclick="submitAbsensi()" style="width: 100%;">
+                    <button class="btn btn-primary" onclick="submitAbsensi()">
                         <i class="fas fa-paper-plane"></i> Kirim Absensi
                     </button>
                 </div>
             </div>
             
+            <!-- Tab Tugas Siswa -->
             <div id="siswa-tugas" class="tab-content">
                 <div class="card">
-                    <h2 style="margin-bottom: 20px; color: var(--primary);">
-                        <i class="fas fa-tasks"></i> Daftar Tugas
-                    </h2>
-                    <div id="siswaTugasList"></div>
+                    <h2 style="margin-bottom: 20px;">Daftar Tugas</h2>
+                    <div id="siswaTugasList">
+                        <!-- Daftar tugas akan dimuat di sini -->
+                    </div>
                 </div>
             </div>
             
+            <!-- Tab Materi Siswa -->
             <div id="siswa-materi" class="tab-content">
                 <div class="card">
-                    <h2 style="margin-bottom: 20px; color: var(--primary);">
-                        <i class="fas fa-book"></i> Materi Pembelajaran
-                    </h2>
-                    <div id="siswaMateriList"></div>
+                    <h2 style="margin-bottom: 20px;">Materi Pembelajaran</h2>
+                    <div id="siswaMateriList">
+                        <!-- Daftar materi akan dimuat di sini -->
+                    </div>
                 </div>
             </div>
             
+            <!-- Tab Nilai Siswa -->
             <div id="siswa-nilai" class="tab-content">
                 <div class="card">
-                    <h2 style="margin-bottom: 20px; color: var(--primary);">
-                        <i class="fas fa-chart-line"></i> Nilai dan Evaluasi
-                    </h2>
-                    <div id="siswaNilaiList"></div>
+                    <h2 style="margin-bottom: 20px;">Nilai dan Evaluasi</h2>
+                    <div id="siswaNilaiList">
+                        <!-- Daftar nilai akan dimuat di sini -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     
+    <!-- Dashboard Guru -->
     <div id="dashboardGuru" class="container" style="display: none;">
         <div class="card">
             <div class="card-header">
+                <h1 class="card-title">Dashboard Guru</h1>
                 <div>
-                    <h1 class="card-title">
-                        <i class="fas fa-chalkboard-teacher"></i> Dashboard Guru
-                    </h1>
-                    <div style="color: var(--gray); margin-top: 5px;">
-                        Selamat datang, Bapak/Ibu Guru!
-                    </div>
-                </div>
-                <div style="display: flex; align-items: center; gap: 15px;">
-                    <div id="syncStatusGuru" class="sync-indicator">
-                        <i class="fas fa-sync"></i> Terhubung
-                    </div>
                     <button class="btn btn-secondary" onclick="logout()">
                         <i class="fas fa-sign-out-alt"></i> Keluar
                     </button>
@@ -988,7 +779,7 @@
             </div>
             
             <div class="stats-grid">
-                <div class="stat-card">
+                <div class="stat-card blue">
                     <div class="label">Total Siswa</div>
                     <div class="value" id="totalSiswaCount">0</div>
                 </div>
@@ -1007,36 +798,25 @@
             </div>
             
             <div class="tab-container">
-                <button class="tab-btn active" onclick="switchTab('guru', 'home')">
-                    <i class="fas fa-home"></i> Beranda
-                </button>
-                <button class="tab-btn" onclick="switchTab('guru', 'absensi')">
-                    <i class="fas fa-calendar-check"></i> Absensi
-                </button>
-                <button class="tab-btn" onclick="switchTab('guru', 'tugas')">
-                    <i class="fas fa-tasks"></i> Tugas
-                </button>
-                <button class="tab-btn" onclick="switchTab('guru', 'materi')">
-                    <i class="fas fa-book"></i> Materi
-                </button>
-                <button class="tab-btn" onclick="switchTab('guru', 'siswa')">
-                    <i class="fas fa-users"></i> Data Siswa
-                </button>
-                <button class="tab-btn" onclick="switchTab('guru', 'penilaian')">
-                    <i class="fas fa-chart-line"></i> Penilaian
-                </button>
+                <button class="tab-btn active" onclick="switchTab('guru', 'home')">Beranda</button>
+                <button class="tab-btn" onclick="switchTab('guru', 'absensi')">Absensi</button>
+                <button class="tab-btn" onclick="switchTab('guru', 'tugas')">Tugas</button>
+                <button class="tab-btn" onclick="switchTab('guru', 'materi')">Materi</button>
+                <button class="tab-btn" onclick="switchTab('guru', 'siswa')">Data Siswa</button>
+                <button class="tab-btn" onclick="switchTab('guru', 'penilaian')">Penilaian</button>
             </div>
             
+            <!-- Tab Beranda Guru -->
             <div id="guru-home" class="tab-content active">
                 <div class="card">
-                    <h2 style="margin-bottom: 15px; color: var(--primary);">
-                        <i class="fas fa-chalkboard-teacher"></i> Selamat Datang, Guru!
-                    </h2>
+                    <h2 style="margin-bottom: 15px;">Selamat Datang, Guru!</h2>
+                    <p style="margin-bottom: 20px; color: #6b7280;">
+                        Selamat datang di Sistem Informatika Terintegrasi SMPN 1 Seputih Surabaya. 
+                        Gunakan menu di atas untuk mengelola pembelajaran siswa.
+                    </p>
                     
                     <div class="share-section">
-                        <h3 style="margin-bottom: 15px; color: var(--primary);">
-                            <i class="fas fa-share-alt"></i> Bagikan Sistem ke Siswa
-                        </h3>
+                        <h3 style="margin-bottom: 15px;">Bagikan Data Pembelajaran</h3>
                         <div class="share-input-group">
                             <input type="text" id="shareUrlGuru" class="share-input" readonly>
                             <button class="copy-btn" onclick="copyShareUrl()">
@@ -1055,17 +835,14 @@
                 </div>
             </div>
             
+            <!-- Tab Absensi Guru -->
             <div id="guru-absensi" class="tab-content">
                 <div class="card">
-                    <h2 style="margin-bottom: 20px; color: var(--primary);">
-                        <i class="fas fa-calendar-check"></i> Rekap Absensi
-                    </h2>
+                    <h2 style="margin-bottom: 20px;">Rekap Absensi</h2>
                     
-                    <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div>
-                            <label class="form-label">
-                                <i class="fas fa-users"></i> Kelas
-                            </label>
+                    <div class="form-group" style="display: flex; gap: 15px;">
+                        <div style="flex: 1;">
+                            <label class="form-label">Kelas</label>
                             <select id="guruAbsensiKelas" class="form-control" onchange="loadAbsensiGuru()">
                                 <option value="8.1">8.1</option>
                                 <option value="8.2">8.2</option>
@@ -1077,10 +854,8 @@
                                 <option value="8.8">8.8</option>
                             </select>
                         </div>
-                        <div>
-                            <label class="form-label">
-                                <i class="fas fa-calendar"></i> Tanggal
-                            </label>
+                        <div style="flex: 1;">
+                            <label class="form-label">Tanggal</label>
                             <input type="date" id="guruAbsensiDate" class="form-control" onchange="loadAbsensiGuru()">
                         </div>
                     </div>
@@ -1093,42 +868,36 @@
                                     <th>NIS</th>
                                     <th>Nama</th>
                                     <th>Status</th>
-                                    <th>Waktu</th>
                                 </tr>
                             </thead>
-                            <tbody id="guruAbsensiBody"></tbody>
+                            <tbody id="guruAbsensiBody">
+                                <!-- Data absensi akan dimuat di sini -->
+                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
             
+            <!-- Tab Tugas Guru -->
             <div id="guru-tugas" class="tab-content">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">
-                            <i class="fas fa-tasks"></i> Manajemen Tugas
-                        </h2>
+                        <h2 class="card-title">Manajemen Tugas</h2>
                         <button class="btn btn-primary" onclick="toggleFormTugas()">
                             <i class="fas fa-plus"></i> Tugas Baru
                         </button>
                     </div>
                     
-                    <div id="formTugas" style="display: none; margin-bottom: 25px; padding: 25px; border: 2px solid #e5e7eb; border-radius: 12px; background: #f8fafc;">
-                        <h3 style="margin-bottom: 20px; color: var(--primary);">
-                            <i class="fas fa-plus-circle"></i> Tambah Tugas Baru
-                        </h3>
+                    <div id="formTugas" style="display: none; margin-bottom: 25px; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px;">
+                        <h3 style="margin-bottom: 15px;">Tambah Tugas Baru</h3>
                         
                         <div class="form-group">
-                            <label class="form-label">
-                                <i class="fas fa-heading"></i> Judul Tugas
-                            </label>
+                            <label class="form-label">Judul Tugas</label>
                             <input type="text" id="tugasTitle" class="form-control" placeholder="Masukkan judul tugas">
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label">
-                                <i class="fas fa-users"></i> Kelas
-                            </label>
+                            <label class="form-label">Kelas</label>
                             <select id="tugasKelas" class="form-control">
                                 <option value="8.1">8.1</option>
                                 <option value="8.2">8.2</option>
@@ -1143,37 +912,34 @@
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label">
-                                <i class="fas fa-clock"></i> Deadline
-                            </label>
+                            <label class="form-label">Deadline</label>
                             <input type="datetime-local" id="tugasDeadline" class="form-control">
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label">
-                                <i class="fas fa-align-left"></i> Deskripsi
-                            </label>
-                            <textarea id="tugasDesc" class="form-control" rows="4" placeholder="Masukkan deskripsi tugas"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">
-                                <i class="fas fa-paperclip"></i> File Lampiran
-                            </label>
-                            <div class="file-upload">
-                                <input type="file" id="tugasFileInput" multiple onchange="handleFileUpload(event, 'tugas')">
-                                <label for="tugasFileInput" class="file-upload-label">
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                    <span>Klik atau drag file ke sini</span>
-                                    <small>Maksimal 10MB per file</small>
-                                </label>
-                            </div>
-                            <div id="tugasFilePreview" class="file-preview"></div>
+                            <label class="form-label">Deskripsi</label>
+                            <textarea id="tugasDesc" class="form-control" rows="3" placeholder="Masukkan deskripsi tugas"></textarea>
                         </div>
                         
-                        <div style="display: flex; gap: 12px;">
+                        <div class="form-group">
+                            <label class="form-label">Lampiran (Opsional)</label>
+                            <input type="file" id="tugasFile" class="form-control" onchange="handleFileSelect(event)">
+                            
+                            <div id="filePreview" class="file-preview" style="display: none;">
+                                <i id="fileIcon" class="fas fa-file"></i>
+                                <div class="file-info">
+                                    <div class="file-name" id="fileName"></div>
+                                    <div class="file-size" id="fileSize"></div>
+                                </div>
+                                <button type="button" class="btn btn-danger" onclick="removeFile()">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px;">
                             <button class="btn btn-primary" onclick="saveTugas()">
-                                <i class="fas fa-save"></i> Simpan Tugas
+                                <i class="fas fa-save"></i> Simpan
                             </button>
                             <button type="button" class="btn btn-secondary" onclick="toggleFormTugas()">
                                 <i class="fas fa-times"></i> Batal
@@ -1181,37 +947,32 @@
                         </div>
                     </div>
                     
-                    <div id="guruTugasList"></div>
+                    <div id="guruTugasList">
+                        <!-- Daftar tugas akan dimuat di sini -->
+                    </div>
                 </div>
             </div>
             
+            <!-- Tab Materi Guru -->
             <div id="guru-materi" class="tab-content">
                 <div class="card">
                     <div class="card-header">
-                        <h2 class="card-title">
-                            <i class="fas fa-book"></i> Manajemen Materi
-                        </h2>
+                        <h2 class="card-title">Manajemen Materi</h2>
                         <button class="btn btn-primary" onclick="toggleFormMateri()">
                             <i class="fas fa-plus"></i> Materi Baru
                         </button>
                     </div>
                     
-                    <div id="formMateri" style="display: none; margin-bottom: 25px; padding: 25px; border: 2px solid #e5e7eb; border-radius: 12px; background: #f8fafc;">
-                        <h3 style="margin-bottom: 20px; color: var(--primary);">
-                            <i class="fas fa-plus-circle"></i> Tambah Materi Baru
-                        </h3>
+                    <div id="formMateri" style="display: none; margin-bottom: 25px; padding: 20px; border: 1px solid #e5e7eb; border-radius: 8px;">
+                        <h3 style="margin-bottom: 15px;">Tambah Materi Baru</h3>
                         
                         <div class="form-group">
-                            <label class="form-label">
-                                <i class="fas fa-heading"></i> Judul Materi
-                            </label>
+                            <label class="form-label">Judul Materi</label>
                             <input type="text" id="materiTitle" class="form-control" placeholder="Masukkan judul materi">
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label">
-                                <i class="fas fa-users"></i> Kelas
-                            </label>
+                            <label class="form-label">Kelas</label>
                             <select id="materiKelas" class="form-control">
                                 <option value="8.1">8.1</option>
                                 <option value="8.2">8.2</option>
@@ -1226,30 +987,29 @@
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label">
-                                <i class="fas fa-align-left"></i> Deskripsi
-                            </label>
-                            <textarea id="materiDesc" class="form-control" rows="4" placeholder="Masukkan deskripsi materi"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="form-label">
-                                <i class="fas fa-paperclip"></i> File Materi
-                            </label>
-                            <div class="file-upload">
-                                <input type="file" id="materiFileInput" multiple onchange="handleFileUpload(event, 'materi')">
-                                <label for="materiFileInput" class="file-upload-label">
-                                    <i class="fas fa-cloud-upload-alt"></i>
-                                    <span>Klik atau drag file ke sini</span>
-                                    <small>Maksimal 10MB per file</small>
-                                </label>
-                            </div>
-                            <div id="materiFilePreview" class="file-preview"></div>
+                            <label class="form-label">Deskripsi</label>
+                            <textarea id="materiDesc" class="form-control" rows="3" placeholder="Masukkan deskripsi materi"></textarea>
                         </div>
                         
-                        <div style="display: flex; gap: 12px;">
+                        <div class="form-group">
+                            <label class="form-label">Lampiran (Opsional)</label>
+                            <input type="file" id="materiFile" class="form-control" onchange="handleMateriFileSelect(event)">
+                            
+                            <div id="materiFilePreview" class="file-preview" style="display: none;">
+                                <i id="materiFileIcon" class="fas fa-file"></i>
+                                <div class="file-info">
+                                    <div class="file-name" id="materiFileName"></div>
+                                    <div class="file-size" id="materiFileSize"></div>
+                                </div>
+                                <button type="button" class="btn btn-danger" onclick="removeMateriFile()">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 10px;">
                             <button class="btn btn-primary" onclick="saveMateri()">
-                                <i class="fas fa-save"></i> Simpan Materi
+                                <i class="fas fa-save"></i> Simpan
                             </button>
                             <button type="button" class="btn btn-secondary" onclick="toggleFormMateri()">
                                 <i class="fas fa-times"></i> Batal
@@ -1257,20 +1017,19 @@
                         </div>
                     </div>
                     
-                    <div id="guruMateriList"></div>
+                    <div id="guruMateriList">
+                        <!-- Daftar materi akan dimuat di sini -->
+                    </div>
                 </div>
             </div>
             
+            <!-- Tab Data Siswa -->
             <div id="guru-siswa" class="tab-content">
                 <div class="card">
-                    <h2 style="margin-bottom: 20px; color: var(--primary);">
-                        <i class="fas fa-users"></i> Data Siswa
-                    </h2>
+                    <h2 style="margin-bottom: 20px;">Data Siswa</h2>
                     
                     <div class="form-group">
-                        <label class="form-label">
-                            <i class="fas fa-users"></i> Kelas
-                            </label>
+                        <label class="form-label">Kelas</label>
                         <select id="guruSiswaKelas" class="form-control" onchange="loadDataSiswa()">
                             <option value="8.1">8.1</option>
                             <option value="8.2">8.2</option>
@@ -1295,23 +1054,22 @@
                                     <th>Nilai Rata-rata</th>
                                 </tr>
                             </thead>
-                            <tbody id="guruSiswaBody"></tbody>
+                            <tbody id="guruSiswaBody">
+                                <!-- Data siswa akan dimuat di sini -->
+                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
             
+            <!-- Tab Penilaian -->
             <div id="guru-penilaian" class="tab-content">
                 <div class="card">
-                    <h2 style="margin-bottom: 20px; color: var(--primary);">
-                        <i class="fas fa-chart-line"></i> Penilaian Tugas
-                    </h2>
+                    <h2 style="margin-bottom: 20px;">Penilaian Tugas</h2>
                     
-                    <div class="form-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                        <div>
-                            <label class="form-label">
-                                <i class="fas fa-users"></i> Kelas
-                            </label>
+                    <div class="form-group" style="display: flex; gap: 15px;">
+                        <div style="flex: 1;">
+                            <label class="form-label">Kelas</label>
                             <select id="penilaianKelas" class="form-control" onchange="loadPenilaian()">
                                 <option value="8.1">8.1</option>
                                 <option value="8.2">8.2</option>
@@ -1323,10 +1081,8 @@
                                 <option value="8.8">8.8</option>
                             </select>
                         </div>
-                        <div>
-                            <label class="form-label">
-                                <i class="fas fa-tasks"></i> Tugas
-                            </label>
+                        <div style="flex: 1;">
+                            <label class="form-label">Tugas</label>
                             <select id="penilaianTugas" class="form-control" onchange="loadPenilaian()">
                                 <option value="">Pilih Tugas</option>
                             </select>
@@ -1346,16 +1102,78 @@
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
-                            <tbody id="guruPenilaianBody"></tbody>
+                            <tbody id="guruPenilaianBody">
+                                <!-- Data penilaian akan dimuat di sini -->
+                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
+    <!-- Modal Tugas -->
+    <div id="tugasModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Kerjakan Tugas</h3>
+                <button class="modal-close" onclick="closeTugasModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Jawaban</label>
+                    <textarea id="tugasJawaban" class="form-control" rows="6" placeholder="Tulis jawaban Anda di sini..."></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Lampiran (Opsional)</label>
+                    <input type="file" class="form-control">
+                </div>
+                
+                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Kirim
+                    </button>
+                    <button class="btn btn-secondary" onclick="closeTugasModal()">
+                        <i class="fas fa-times"></i> Batal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Nilai -->
+    <div id="nilaiModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Detail Penilaian</h3>
+                <button class="modal-close" onclick="closeNilaiModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label class="form-label">Nilai</label>
+                    <input type="number" id="modalNilai" class="form-control" min="0" max="100">
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Komentar</label>
+                    <textarea id="modalKomentar" class="form-control" rows="4" placeholder="Berikan komentar untuk siswa..."></textarea>
+                </div>
+                
+                <div style="display: flex; gap: 10px; justify-content: flex-end;">
+                    <button class="btn btn-primary">
+                        <i class="fas fa-save"></i> Simpan
+                    </button>
+                    <button class="btn btn-secondary" onclick="closeNilaiModal()">
+                        <i class="fas fa-times"></i> Batal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script>
-        // ==================== DATA SISWA LENGKAP ====================
+        // DATA SISWA LENGKAP DARI FILE ASLI
         const studentsData = {
             "8.1": [
                 { nis: "8103", name: "ALFIN MAULANA AKBAR", password: "8103" },
@@ -1504,7 +1322,7 @@
                 { nis: "8151", name: "DENIS ARGIANTARA", password: "8151" },
                 { nis: "8162", name: "EKA VIRLI AULIA", password: "8162" },
                 { nis: "8167", name: "FAIZ FARENDRA TAMA", password: "8167" },
-                { nis: "8178", name: "GRACEY FATRYA ZAHRAA", password: "8178" },
+                { nis: "8178", name: "GRACEY FATRYY ZAHRAA", password: "8178" },
                 { nis: "8185", name: "HARIL SYARIFUDIN", password: "8185" },
                 { nis: "8192", name: "I WAYAN DAVID KEVINDRA WINOLA", password: "8192" },
                 { nis: "8196", name: "INNAS HANIFAH", password: "8196" },
@@ -1634,51 +1452,66 @@
             ]
         };
 
-        const guruData = [
-            { 
-                username: "guru", 
-                password: "guru123", 
-                nama: "Bapak/Ibu Guru",
-                role: "admin"
-            }
-        ];
-
+        // Data aplikasi
         let appData = {
             absensi: [],
             tugas: [],
             materi: [],
             nilai: [],
             currentUser: null,
-            currentRole: null,
-            lastSync: null
+            currentRole: null
         };
 
-        let selectedStatus = '';
-        let currentUploadFiles = [];
+        // Data guru
+        const guruData = [
+            { username: "guru", password: "guru123", nama: "Bapak/Ibu Guru" }
+        ];
+
+        // Inisialisasi aplikasi
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set tanggal default
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('siswaAbsensiDate').value = today;
+            document.getElementById('guruAbsensiDate').value = today;
+            
+            // Cek apakah ada data di URL
+            loadDataFromURL();
+            
+            // Cek apakah user sudah login sebelumnya
+            const savedUser = localStorage.getItem('currentUser');
+            const savedRole = localStorage.getItem('currentRole');
+            
+            if (savedUser && savedRole) {
+                appData.currentUser = JSON.parse(savedUser);
+                appData.currentRole = savedRole;
+                showDashboard(savedRole);
+            }
+        });
+
+        // ==================== FUNGSI LOGIN & LOGOUT ====================
 
         function selectRole(role) {
-            document.querySelectorAll('.role-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.role-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
             event.target.classList.add('active');
             
-            const securityWarning = document.getElementById('guruSecurityWarning');
-            
             if (role === 'siswa') {
-                document.getElementById('usernameLabel').innerHTML = '<i class="fas fa-id-card"></i> NIS';
+                document.getElementById('usernameLabel').textContent = 'NIS';
                 document.getElementById('username').placeholder = 'Masukkan NIS';
                 document.getElementById('demoInfo').innerHTML = `
-                    <strong><i class="fas fa-info-circle"></i> Demo Siswa:</strong><br>
+                    <strong>Demo Siswa:</strong><br>
                     NIS: <strong>8103</strong><br>
                     Password: <strong>8103</strong>
                 `;
-                securityWarning.style.display = 'none';
             } else {
-                document.getElementById('usernameLabel').innerHTML = '<i class="fas fa-user"></i> Username Guru';
-                document.getElementById('username').placeholder = 'Masukkan username guru';
+                document.getElementById('usernameLabel').textContent = 'Username';
+                document.getElementById('username').placeholder = 'Masukkan username';
                 document.getElementById('demoInfo').innerHTML = `
-                    <strong><i class="fas fa-info-circle"></i> Akses Terbatas:</strong><br>
-                    Hanya untuk staf pengajar yang berwenang
+                    <strong>Login Guru:</strong><br>
+                    Silakan hubungi administrator untuk mendapatkan akses.
                 `;
-                securityWarning.style.display = 'block';
             }
         }
 
@@ -1706,15 +1539,16 @@
                     appData.currentUser = { 
                         nis: foundSiswa.nis, 
                         nama: foundSiswa.name, 
-                        kelas: foundKelas
+                        kelas: foundKelas,
+                        password: foundSiswa.password
                     };
                     appData.currentRole = role;
                     localStorage.setItem('currentUser', JSON.stringify(appData.currentUser));
                     localStorage.setItem('currentRole', role);
                     showDashboard(role);
-                    showNotification(`Selamat datang, ${foundSiswa.name}!`, 'success');
+                    updateShareUrl();
                 } else {
-                    showNotification('NIS atau password salah!', 'error');
+                    alert('NIS atau password salah!');
                 }
             } else {
                 const guru = guruData.find(g => g.username === username && g.password === password);
@@ -1724,9 +1558,9 @@
                     localStorage.setItem('currentUser', JSON.stringify(guru));
                     localStorage.setItem('currentRole', role);
                     showDashboard(role);
-                    showNotification('Selamat datang, Bapak/Ibu Guru!', 'success');
+                    updateShareUrl();
                 } else {
-                    showNotification('Username atau password guru salah!', 'error');
+                    alert('Username atau password salah! Silakan hubungi administrator untuk mendapatkan akses.');
                 }
             }
         }
@@ -1738,11 +1572,23 @@
                 document.getElementById('dashboardSiswa').style.display = 'block';
                 document.getElementById('siswaInfo').textContent = 
                     `${appData.currentUser.nama} - Kelas ${appData.currentUser.kelas}`;
-                refreshCurrentView();
+                
+                loadTugasSiswa();
+                loadMateriSiswa();
+                loadNilaiSiswa();
+                updateStatsSiswa();
             } else {
                 document.getElementById('dashboardGuru').style.display = 'block';
-                refreshCurrentView();
+                
+                loadAbsensiGuru();
+                loadTugasGuru();
+                loadMateriGuru();
+                loadDataSiswa();
+                loadPenilaian();
+                updateTotalSiswaCount();
             }
+            
+            updateShareUrl();
         }
 
         function logout() {
@@ -1757,323 +1603,9 @@
             
             document.getElementById('username').value = '';
             document.getElementById('password').value = '';
-            
-            showNotification('Anda telah logout', 'warning');
         }
 
-        function showNotification(message, type = 'success') {
-            const container = document.getElementById('notificationContainer');
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `
-                <i class="fas fa-${type === 'success' ? 'check' : type === 'warning' ? 'exclamation-triangle' : 'exclamation-circle'}"></i>
-                <span>${message}</span>
-            `;
-            
-            container.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.remove();
-            }, 5000);
-        }
-
-        function refreshCurrentView() {
-            if (!appData.currentRole) return;
-
-            if (appData.currentRole === 'siswa') {
-                updateStatsSiswa();
-            } else {
-                updateGuruStats();
-            }
-        }
-
-        function updateStatsSiswa() {
-            document.getElementById('siswaKehadiran').textContent = '85%';
-            document.getElementById('siswaTugasSelesai').textContent = '5/8';
-            document.getElementById('siswaNilaiRata').textContent = '82';
-        }
-
-        function updateGuruStats() {
-            document.getElementById('totalSiswaCount').textContent = '256';
-            document.getElementById('guruPresentCount').textContent = '230';
-            document.getElementById('guruActiveTasks').textContent = '5';
-            document.getElementById('guruMateriCount').textContent = '12';
-        }
-
-        function handleFileUpload(event, type) {
-            const files = Array.from(event.target.files);
-            const maxSize = 10 * 1024 * 1024;
-
-            files.forEach(file => {
-                if (file.size > maxSize) {
-                    showNotification(`File ${file.name} terlalu besar (maksimal 10MB)`, 'error');
-                    return;
-                }
-
-                const fileData = {
-                    id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
-                    name: file.name,
-                    type: file.type,
-                    size: file.size,
-                    file: file,
-                    uploadDate: new Date().toISOString()
-                };
-
-                currentUploadFiles.push(fileData);
-                updateFilePreview(type);
-            });
-
-            event.target.value = '';
-        }
-
-        function updateFilePreview(type) {
-            const container = document.getElementById(`${type}FilePreview`);
-            if (!container) return;
-
-            container.innerHTML = '';
-
-            currentUploadFiles.forEach((fileData, index) => {
-                const fileSize = formatFileSize(fileData.size);
-                const fileIcon = getFileIcon(fileData.type);
-
-                container.innerHTML += `
-                    <div class="file-item">
-                        <div class="file-info">
-                            <div class="file-icon">
-                                <i class="${fileIcon}"></i>
-                            </div>
-                            <div class="file-details">
-                                <div class="file-name">${fileData.name}</div>
-                                <div class="file-size">${fileSize}</div>
-                            </div>
-                        </div>
-                        <div class="file-actions">
-                            <button class="btn btn-primary" onclick="previewFile('${fileData.id}')">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                            <button class="btn btn-danger" onclick="removeFile(${index}, '${type}')">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            });
-        }
-
-        function removeFile(index, type) {
-            currentUploadFiles.splice(index, 1);
-            updateFilePreview(type);
-        }
-
-        function formatFileSize(bytes) {
-            if (bytes === 0) return '0 Bytes';
-            const k = 1024;
-            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-            const i = Math.floor(Math.log(bytes) / Math.log(k));
-            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
-        }
-
-        function getFileIcon(fileType) {
-            const icons = {
-                'application/pdf': 'fas fa-file-pdf',
-                'application/msword': 'fas fa-file-word',
-                'application/vnd.openxmlformats-officedocument.wordprocessingml.document': 'fas fa-file-word',
-                'image/jpeg': 'fas fa-file-image',
-                'image/png': 'fas fa-file-image',
-                'text/plain': 'fas fa-file-alt'
-            };
-            return icons[fileType] || 'fas fa-file';
-        }
-
-        function previewFile(fileId) {
-            const fileData = currentUploadFiles.find(f => f.id === fileId);
-            if (!fileData) return;
-
-            const modal = document.getElementById('filePreviewModal');
-            const content = document.getElementById('filePreviewContent');
-
-            let previewHTML = `
-                <div class="preview-header">
-                    <h3>${fileData.name}</h3>
-                    <button class="btn btn-primary" onclick="downloadFile('${fileData.id}')">
-                        <i class="fas fa-download"></i> Unduh
-                    </button>
-                </div>
-                <div class="preview-content">
-            `;
-
-            if (fileData.type === 'application/pdf') {
-                previewHTML += `
-                    <iframe src="${URL.createObjectURL(fileData.file)}" 
-                            class="pdf-preview" 
-                            title="${fileData.name}">
-                    </iframe>
-                `;
-            } else if (fileData.type.startsWith('image/')) {
-                previewHTML += `
-                    <img src="${URL.createObjectURL(fileData.file)}" 
-                         class="image-preview" 
-                         alt="${fileData.name}">
-                `;
-            } else {
-                previewHTML += `
-                    <div style="text-align: center; padding: 40px;">
-                        <i class="fas fa-file fa-4x" style="color: var(--gray); margin-bottom: 20px;"></i>
-                        <p>Pratinjau tidak tersedia untuk file ini</p>
-                        <button class="btn btn-primary" onclick="downloadFile('${fileData.id}')">
-                            <i class="fas fa-download"></i> Unduh File
-                        </button>
-                    </div>
-                `;
-            }
-
-            previewHTML += '</div>';
-            content.innerHTML = previewHTML;
-            modal.style.display = 'block';
-        }
-
-        function closeFilePreview() {
-            document.getElementById('filePreviewModal').style.display = 'none';
-        }
-
-        function downloadFile(fileId) {
-            const fileData = currentUploadFiles.find(f => f.id === fileId);
-            if (!fileData) return;
-
-            const url = URL.createObjectURL(fileData.file);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = fileData.name;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-        }
-
-        function toggleFormTugas() {
-            const form = document.getElementById('formTugas');
-            form.style.display = form.style.display === 'block' ? 'none' : 'block';
-            
-            if (form.style.display === 'block') {
-                currentUploadFiles = [];
-                updateFilePreview('tugas');
-            }
-        }
-
-        function toggleFormMateri() {
-            const form = document.getElementById('formMateri');
-            form.style.display = form.style.display === 'block' ? 'none' : 'block';
-            
-            if (form.style.display === 'block') {
-                currentUploadFiles = [];
-                updateFilePreview('materi');
-            }
-        }
-
-        function saveTugas() {
-            const title = document.getElementById('tugasTitle').value;
-            const kelas = document.getElementById('tugasKelas').value;
-            const deadline = document.getElementById('tugasDeadline').value;
-            const desc = document.getElementById('tugasDesc').value;
-            
-            if (!title || !deadline) {
-                showNotification('Judul dan deadline harus diisi!', 'error');
-                return;
-            }
-            
-            const tugasData = {
-                id: Date.now().toString(),
-                title: title,
-                kelas: kelas,
-                deadline: deadline,
-                desc: desc,
-                files: [...currentUploadFiles],
-                createdAt: new Date().toISOString(),
-                createdBy: appData.currentUser.nama
-            };
-            
-            appData.tugas.push(tugasData);
-            saveToLocalStorage();
-            
-            showNotification('✅ Tugas berhasil disimpan!', 'success');
-            
-            document.getElementById('tugasTitle').value = '';
-            document.getElementById('tugasKelas').value = '8.1';
-            document.getElementById('tugasDeadline').value = '';
-            document.getElementById('tugasDesc').value = '';
-            currentUploadFiles = [];
-            updateFilePreview('tugas');
-            document.getElementById('formTugas').style.display = 'none';
-        }
-
-        function saveMateri() {
-            const title = document.getElementById('materiTitle').value;
-            const kelas = document.getElementById('materiKelas').value;
-            const desc = document.getElementById('materiDesc').value;
-            
-            if (!title) {
-                showNotification('Judul materi harus diisi!', 'error');
-                return;
-            }
-            
-            const materiData = {
-                id: Date.now().toString(),
-                title: title,
-                kelas: kelas,
-                desc: desc,
-                files: [...currentUploadFiles],
-                createdAt: new Date().toISOString(),
-                createdBy: appData.currentUser.nama
-            };
-            
-            appData.materi.push(materiData);
-            saveToLocalStorage();
-            
-            showNotification('✅ Materi berhasil disimpan!', 'success');
-            
-            document.getElementById('materiTitle').value = '';
-            document.getElementById('materiKelas').value = '8.1';
-            document.getElementById('materiDesc').value = '';
-            currentUploadFiles = [];
-            updateFilePreview('materi');
-            document.getElementById('formMateri').style.display = 'none';
-        }
-
-        function saveToLocalStorage() {
-            localStorage.setItem('appData', JSON.stringify(appData));
-        }
-
-        function loadFromLocalStorage() {
-            const saved = localStorage.getItem('appData');
-            if (saved) {
-                appData = JSON.parse(saved);
-            }
-        }
-
-        function updateShareUrl() {
-            const baseUrl = window.location.href.split('?')[0];
-            document.getElementById('shareUrl').value = baseUrl;
-            document.getElementById('shareUrlGuru').value = baseUrl;
-        }
-
-        function copyShareUrl() {
-            const urlInput = document.getElementById('shareUrl') || document.getElementById('shareUrlGuru');
-            urlInput.select();
-            document.execCommand('copy');
-            
-            const copyBtn = event.target.closest('.copy-btn');
-            const originalText = copyBtn.innerHTML;
-            
-            copyBtn.innerHTML = '<i class="fas fa-check"></i>';
-            copyBtn.classList.add('copied');
-            
-            showNotification('URL berhasil disalin!', 'success');
-            
-            setTimeout(() => {
-                copyBtn.innerHTML = originalText;
-                copyBtn.classList.remove('copied');
-            }, 2000);
-        }
+        // ==================== FUNGSI TAB & NAVIGASI ====================
 
         function switchTab(role, tab) {
             document.querySelectorAll(`#${role}-home, #${role}-absensi, #${role}-tugas, #${role}-materi, #${role}-nilai, #${role}-siswa, #${role}-penilaian`).forEach(el => {
@@ -2087,83 +1619,877 @@
             });
             
             event.target.classList.add('active');
+            
+            if (role === 'siswa' && tab === 'tugas') {
+                loadTugasSiswa();
+            } else if (role === 'siswa' && tab === 'materi') {
+                loadMateriSiswa();
+            } else if (role === 'siswa' && tab === 'nilai') {
+                loadNilaiSiswa();
+            } else if (role === 'guru' && tab === 'absensi') {
+                loadAbsensiGuru();
+            } else if (role === 'guru' && tab === 'tugas') {
+                loadTugasGuru();
+            } else if (role === 'guru' && tab === 'materi') {
+                loadMateriGuru();
+            } else if (role === 'guru' && tab === 'siswa') {
+                loadDataSiswa();
+            } else if (role === 'guru' && tab === 'penilaian') {
+                loadPenilaian();
+            }
         }
 
+        // ==================== FUNGSI ABSENSI ====================
+
+        let selectedStatus = '';
         function selectStatus(status) {
             selectedStatus = status;
-            document.querySelectorAll('.status-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.querySelectorAll('.status-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
             event.target.classList.add('active');
         }
 
         function submitAbsensi() {
             if (!selectedStatus) {
-                showNotification('Pilih status kehadiran terlebih dahulu!', 'error');
+                alert('Pilih status kehadiran terlebih dahulu!');
                 return;
             }
             
             const date = document.getElementById('siswaAbsensiDate').value;
             const note = document.getElementById('siswaAbsensiNote').value;
             
-            const absensiData = {
-                nis: appData.currentUser.nis,
-                nama: appData.currentUser.nama,
-                kelas: appData.currentUser.kelas,
-                date: date,
-                status: selectedStatus,
-                note: note,
-                timestamp: new Date().toISOString()
-            };
+            const existingIndex = appData.absensi.findIndex(a => 
+                a.nis === appData.currentUser.nis && a.date === date
+            );
             
-            appData.absensi.push(absensiData);
-            saveToLocalStorage();
+            if (existingIndex !== -1) {
+                appData.absensi[existingIndex].status = selectedStatus;
+                appData.absensi[existingIndex].note = note;
+            } else {
+                appData.absensi.push({
+                    nis: appData.currentUser.nis,
+                    nama: appData.currentUser.nama,
+                    kelas: appData.currentUser.kelas,
+                    date: date,
+                    status: selectedStatus,
+                    note: note
+                });
+            }
             
-            showNotification('✅ Absensi berhasil disimpan!', 'success');
-            
-            document.getElementById('siswaAbsensiNote').value = '';
-            selectedStatus = '';
-            document.querySelectorAll('.status-btn').forEach(btn => btn.classList.remove('active'));
+            alert('Absensi berhasil disimpan!');
+            updateShareUrl();
         }
 
-        function shareToWhatsApp() {
-            const url = document.getElementById('shareUrl').value;
-            window.open(`https://wa.me/?text=${encodeURIComponent('Akses sistem pembelajaran: ' + url)}`, '_blank');
+        function loadAbsensiGuru() {
+            const kelas = document.getElementById('guruAbsensiKelas').value;
+            const date = document.getElementById('guruAbsensiDate').value;
+            
+            const siswaKelas = studentsData[kelas] || [];
+            const tbody = document.getElementById('guruAbsensiBody');
+            tbody.innerHTML = '';
+            
+            siswaKelas.forEach((siswa, index) => {
+                const absensi = appData.absensi.find(a => 
+                    a.nis === siswa.nis && a.date === date
+                );
+                
+                const status = absensi ? absensi.status : 'belum';
+                
+                let statusText = '';
+                let badgeClass = '';
+                
+                switch(status) {
+                    case 'present':
+                        statusText = 'Hadir';
+                        badgeClass = 'badge success';
+                        break;
+                    case 'late':
+                        statusText = 'Terlambat';
+                        badgeClass = 'badge warning';
+                        break;
+                    case 'absent':
+                        statusText = 'Tidak Hadir';
+                        badgeClass = 'badge danger';
+                        break;
+                    default:
+                        statusText = 'Belum Absen';
+                        badgeClass = 'badge gray';
+                }
+                
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${siswa.nis}</td>
+                        <td>${siswa.name}</td>
+                        <td><span class="${badgeClass}">${statusText}</span></td>
+                    </tr>
+                `;
+            });
+            
+            updateGuruStats();
         }
 
-        function shareToTelegram() {
-            const url = document.getElementById('shareUrl').value;
-            window.open(`https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent('Akses sistem pembelajaran')}`, '_blank');
+        // ==================== FUNGSI TUGAS ====================
+
+        let editingTugasId = null;
+
+        function toggleFormTugas() {
+            const form = document.getElementById('formTugas');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+            
+            // Reset form jika tidak dalam mode edit
+            if (!editingTugasId) {
+                resetFormTugas();
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('siswaAbsensiDate').value = today;
-            document.getElementById('guruAbsensiDate').value = today;
-            
-            initializeApp();
-        });
+        function resetFormTugas() {
+            document.getElementById('tugasTitle').value = '';
+            document.getElementById('tugasKelas').value = '8.1';
+            document.getElementById('tugasDeadline').value = '';
+            document.getElementById('tugasDesc').value = '';
+            removeFile();
+            editingTugasId = null;
+        }
 
-        function initializeApp() {
-            showNotification('Sistem pembelajaran siap digunakan!', 'success');
+        function saveTugas() {
+            const title = document.getElementById('tugasTitle').value;
+            const kelas = document.getElementById('tugasKelas').value;
+            const deadline = document.getElementById('tugasDeadline').value;
+            const desc = document.getElementById('tugasDesc').value;
             
-            loadFromLocalStorage();
+            if (!title || !deadline) {
+                alert('Judul dan deadline harus diisi!');
+                return;
+            }
             
-            const savedUser = localStorage.getItem('currentUser');
-            const savedRole = localStorage.getItem('currentRole');
+            if (editingTugasId) {
+                // Edit tugas yang sudah ada
+                const tugasIndex = appData.tugas.findIndex(t => t.id === editingTugasId);
+                if (tugasIndex !== -1) {
+                    appData.tugas[tugasIndex].title = title;
+                    appData.tugas[tugasIndex].kelas = kelas;
+                    appData.tugas[tugasIndex].deadline = deadline;
+                    appData.tugas[tugasIndex].desc = desc;
+                    appData.tugas[tugasIndex].updatedAt = new Date().toISOString();
+                }
+            } else {
+                // Tambah tugas baru
+                const newTugas = {
+                    id: Date.now().toString(),
+                    title: title,
+                    kelas: kelas,
+                    deadline: deadline,
+                    desc: desc,
+                    createdAt: new Date().toISOString()
+                };
+                
+                appData.tugas.push(newTugas);
+            }
             
-            if (savedUser && savedRole) {
-                appData.currentUser = JSON.parse(savedUser);
-                appData.currentRole = savedRole;
-                showDashboard(savedRole);
+            document.getElementById('formTugas').style.display = 'none';
+            resetFormTugas();
+            loadTugasGuru();
+            alert('Tugas berhasil disimpan!');
+            updateShareUrl();
+        }
+
+        function editTugas(id) {
+            const tugas = appData.tugas.find(t => t.id === id);
+            if (!tugas) return;
+            
+            document.getElementById('tugasTitle').value = tugas.title;
+            document.getElementById('tugasKelas').value = tugas.kelas;
+            document.getElementById('tugasDeadline').value = tugas.deadline;
+            document.getElementById('tugasDesc').value = tugas.desc || '';
+            
+            editingTugasId = id;
+            document.getElementById('formTugas').style.display = 'block';
+        }
+
+        function deleteTugas(id) {
+            if (confirm('Hapus tugas ini?')) {
+                appData.tugas = appData.tugas.filter(t => t.id !== id);
+                loadTugasGuru();
+                updateShareUrl();
+            }
+        }
+
+        function loadTugasGuru() {
+            const container = document.getElementById('guruTugasList');
+            container.innerHTML = '';
+            
+            if (appData.tugas.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 20px; color: #666;">Belum ada tugas yang dibuat.</p>';
+                return;
+            }
+            
+            const sortedTugas = [...appData.tugas].sort((a, b) => 
+                new Date(b.createdAt) - new Date(a.createdAt)
+            );
+            
+            sortedTugas.forEach(tugas => {
+                const deadline = new Date(tugas.deadline);
+                const now = new Date();
+                const isOverdue = deadline < now;
+                
+                container.innerHTML += `
+                    <div class="materi-item">
+                        <div class="materi-header">
+                            <div>
+                                <h3 style="margin: 0 0 5px 0;">${tugas.title}</h3>
+                                <p style="margin: 0; color: #666;">Kelas: ${tugas.kelas === 'all' ? 'Semua Kelas' : tugas.kelas} | Deadline: ${formatDate(deadline)}</p>
+                            </div>
+                            <div class="materi-actions">
+                                <button class="btn-warning" onclick="editTugas('${tugas.id}')">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn-danger" onclick="deleteTugas('${tugas.id}')">
+                                    <i class="fas fa-trash"></i> Hapus
+                                </button>
+                            </div>
+                        </div>
+                        ${tugas.desc ? `<p style="margin: 10px 0;">${tugas.desc}</p>` : ''}
+                        ${isOverdue ? `<span class="badge danger">Terlambat</span>` : `<span class="badge success">Aktif</span>`}
+                    </div>
+                `;
+            });
+            
+            updateGuruStats();
+        }
+
+        function loadTugasSiswa() {
+            const container = document.getElementById('siswaTugasList');
+            container.innerHTML = '';
+            
+            const tugasSiswa = appData.tugas.filter(t => 
+                t.kelas === 'all' || t.kelas === appData.currentUser.kelas
+            );
+            
+            if (tugasSiswa.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 20px; color: #666;">Belum ada tugas yang tersedia.</p>';
+                return;
+            }
+            
+            const sortedTugas = [...tugasSiswa].sort((a, b) => 
+                new Date(a.deadline) - new Date(b.deadline)
+            );
+            
+            sortedTugas.forEach(tugas => {
+                const deadline = new Date(tugas.deadline);
+                const now = new Date();
+                const isOverdue = deadline < now;
+                const timeLeft = deadline - now;
+                const daysLeft = Math.ceil(timeLeft / (1000 * 60 * 60 * 24));
+                
+                let statusText = '';
+                let statusClass = '';
+                
+                if (isOverdue) {
+                    statusText = 'Terlambat';
+                    statusClass = 'badge danger';
+                } else if (daysLeft <= 1) {
+                    statusText = 'Batas waktu hampir habis';
+                    statusClass = 'badge warning';
+                } else {
+                    statusText = `${daysLeft} hari lagi`;
+                    statusClass = 'badge success';
+                }
+                
+                container.innerHTML += `
+                    <div class="materi-item">
+                        <div class="materi-header">
+                            <div>
+                                <h3 style="margin: 0 0 5px 0;">${tugas.title}</h3>
+                                <p style="margin: 0; color: #666;">Deadline: ${formatDate(deadline)}</p>
+                            </div>
+                            <div class="materi-actions">
+                                <span class="${statusClass}">${statusText}</span>
+                                <button class="btn-primary" onclick="openTugasModal('${tugas.id}')">
+                                    <i class="fas fa-pencil-alt"></i> Kerjakan
+                                </button>
+                            </div>
+                        </div>
+                        ${tugas.desc ? `<p style="margin: 10px 0;">${tugas.desc}</p>` : ''}
+                    </div>
+                `;
+            });
+        }
+
+        // ==================== FUNGSI MATERI ====================
+
+        let editingMateriId = null;
+
+        function toggleFormMateri() {
+            const form = document.getElementById('formMateri');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+            
+            // Reset form jika tidak dalam mode edit
+            if (!editingMateriId) {
+                resetFormMateri();
+            }
+        }
+
+        function resetFormMateri() {
+            document.getElementById('materiTitle').value = '';
+            document.getElementById('materiKelas').value = '8.1';
+            document.getElementById('materiDesc').value = '';
+            removeMateriFile();
+            editingMateriId = null;
+        }
+
+        function saveMateri() {
+            const title = document.getElementById('materiTitle').value;
+            const kelas = document.getElementById('materiKelas').value;
+            const desc = document.getElementById('materiDesc').value;
+            
+            if (!title) {
+                alert('Judul materi harus diisi!');
+                return;
+            }
+            
+            if (editingMateriId) {
+                // Edit materi yang sudah ada
+                const materiIndex = appData.materi.findIndex(m => m.id === editingMateriId);
+                if (materiIndex !== -1) {
+                    appData.materi[materiIndex].title = title;
+                    appData.materi[materiIndex].kelas = kelas;
+                    appData.materi[materiIndex].desc = desc;
+                    appData.materi[materiIndex].updatedAt = new Date().toISOString();
+                }
+            } else {
+                // Tambah materi baru
+                const newMateri = {
+                    id: Date.now().toString(),
+                    title: title,
+                    kelas: kelas,
+                    desc: desc,
+                    createdAt: new Date().toISOString()
+                };
+                
+                appData.materi.push(newMateri);
+            }
+            
+            document.getElementById('formMateri').style.display = 'none';
+            resetFormMateri();
+            loadMateriGuru();
+            alert('Materi berhasil disimpan!');
+            updateShareUrl();
+        }
+
+        function editMateri(id) {
+            const materi = appData.materi.find(m => m.id === id);
+            if (!materi) return;
+            
+            document.getElementById('materiTitle').value = materi.title;
+            document.getElementById('materiKelas').value = materi.kelas;
+            document.getElementById('materiDesc').value = materi.desc || '';
+            
+            editingMateriId = id;
+            document.getElementById('formMateri').style.display = 'block';
+        }
+
+        function deleteMateri(id) {
+            if (confirm('Hapus materi ini?')) {
+                appData.materi = appData.materi.filter(m => m.id !== id);
+                loadMateriGuru();
+                updateShareUrl();
+            }
+        }
+
+        function loadMateriGuru() {
+            const container = document.getElementById('guruMateriList');
+            container.innerHTML = '';
+            
+            if (appData.materi.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 20px; color: #666;">Belum ada materi yang dibuat.</p>';
+                return;
+            }
+            
+            const sortedMateri = [...appData.materi].sort((a, b) => 
+                new Date(b.createdAt) - new Date(a.createdAt)
+            );
+            
+            sortedMateri.forEach(materi => {
+                container.innerHTML += `
+                    <div class="materi-item">
+                        <div class="materi-header">
+                            <div>
+                                <h3 style="margin: 0 0 5px 0;">${materi.title}</h3>
+                                <p style="margin: 0; color: #666;">Kelas: ${materi.kelas === 'all' ? 'Semua Kelas' : materi.kelas} | Dibuat: ${formatDate(new Date(materi.createdAt))}</p>
+                            </div>
+                            <div class="materi-actions">
+                                <button class="btn-warning" onclick="editMateri('${materi.id}')">
+                                    <i class="fas fa-edit"></i> Edit
+                                </button>
+                                <button class="btn-danger" onclick="deleteMateri('${materi.id}')">
+                                    <i class="fas fa-trash"></i> Hapus
+                                </button>
+                            </div>
+                        </div>
+                        ${materi.desc ? `<p style="margin: 10px 0;">${materi.desc}</p>` : ''}
+                    </div>
+                `;
+            });
+            
+            updateGuruStats();
+        }
+
+        function loadMateriSiswa() {
+            const container = document.getElementById('siswaMateriList');
+            container.innerHTML = '';
+            
+            const materiSiswa = appData.materi.filter(m => 
+                m.kelas === 'all' || m.kelas === appData.currentUser.kelas
+            );
+            
+            if (materiSiswa.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 20px; color: #666;">Belum ada materi yang tersedia.</p>';
+                return;
+            }
+            
+            const sortedMateri = [...materiSiswa].sort((a, b) => 
+                new Date(b.createdAt) - new Date(a.createdAt)
+            );
+            
+            sortedMateri.forEach(materi => {
+                container.innerHTML += `
+                    <div class="materi-item">
+                        <div class="materi-header">
+                            <div>
+                                <h3 style="margin: 0 0 5px 0;">${materi.title}</h3>
+                                <p style="margin: 0; color: #666;">Dibuat: ${formatDate(new Date(materi.createdAt))}</p>
+                            </div>
+                        </div>
+                        ${materi.desc ? `<p style="margin: 10px 0;">${materi.desc}</p>` : ''}
+                        <div class="materi-actions">
+                            <button class="btn-primary">
+                                <i class="fas fa-download"></i> Unduh
+                            </button>
+                            <button class="btn-success">
+                                <i class="fas fa-eye"></i> Lihat
+                            </button>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // ==================== FUNGSI DATA SISWA ====================
+
+        function loadDataSiswa() {
+            const kelas = document.getElementById('guruSiswaKelas').value;
+            const siswaKelas = studentsData[kelas] || [];
+            const tbody = document.getElementById('guruSiswaBody');
+            tbody.innerHTML = '';
+            
+            siswaKelas.forEach((siswa, index) => {
+                const absensiSiswa = appData.absensi.filter(a => a.nis === siswa.nis);
+                const totalAbsensi = absensiSiswa.length;
+                const hadirCount = absensiSiswa.filter(a => a.status === 'present').length;
+                const kehadiran = totalAbsensi > 0 ? Math.round((hadirCount / totalAbsensi) * 100) : 0;
+                
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${siswa.nis}</td>
+                        <td>${siswa.name}</td>
+                        <td>${kelas}</td>
+                        <td>${kehadiran}%</td>
+                        <td>85</td>
+                    </tr>
+                `;
+            });
+        }
+
+        // ==================== FUNGSI PENILAIAN ====================
+
+        function loadPenilaian() {
+            const kelas = document.getElementById('penilaianKelas').value;
+            const tugasId = document.getElementById('penilaianTugas').value;
+            
+            const tugasSelect = document.getElementById('penilaianTugas');
+            tugasSelect.innerHTML = '<option value="">Pilih Tugas</option>';
+            
+            appData.tugas.forEach(tugas => {
+                if (tugas.kelas === kelas || tugas.kelas === 'all') {
+                    tugasSelect.innerHTML += `<option value="${tugas.id}">${tugas.title}</option>`;
+                }
+            });
+            
+            if (!tugasId) {
+                document.getElementById('guruPenilaianBody').innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 20px;">Pilih tugas terlebih dahulu</td></tr>';
+                return;
+            }
+            
+            const siswaKelas = studentsData[kelas] || [];
+            const tbody = document.getElementById('guruPenilaianBody');
+            tbody.innerHTML = '';
+            
+            siswaKelas.forEach((siswa, index) => {
+                const nilaiData = appData.nilai.find(n => 
+                    n.tugasId === tugasId && n.nis === siswa.nis
+                );
+                
+                const status = nilaiData ? 'Dinilai' : 'Belum Dinilai';
+                const nilai = nilaiData ? nilaiData.nilai : '';
+                const komentar = nilaiData ? nilaiData.komentar : '';
+                
+                tbody.innerHTML += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${siswa.nis}</td>
+                        <td>${siswa.name}</td>
+                        <td><span class="badge ${nilaiData ? 'success' : 'warning'}">${status}</span></td>
+                        <td>
+                            <input type="number" class="nilai-input" id="nilai-${siswa.nis}" 
+                                   value="${nilai}" min="0" max="100" 
+                                   onchange="updateNilai('${tugasId}', '${siswa.nis}')">
+                        </td>
+                        <td>
+                            <input type="text" id="komentar-${siswa.nis}" 
+                                   value="${komentar}" placeholder="Komentar..."
+                                   onchange="updateNilai('${tugasId}', '${siswa.nis}')">
+                        </td>
+                        <td>
+                            <button class="btn-primary" onclick="openNilaiModal('${tugasId}', '${siswa.nis}')">
+                                <i class="fas fa-edit"></i> Detail
+                            </button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+
+        function updateNilai(tugasId, nis) {
+            const nilai = document.getElementById(`nilai-${nis}`).value;
+            const komentar = document.getElementById(`komentar-${nis}`).value;
+            
+            const existingIndex = appData.nilai.findIndex(n => 
+                n.tugasId === tugasId && n.nis === nis
+            );
+            
+            if (existingIndex !== -1) {
+                appData.nilai[existingIndex].nilai = nilai;
+                appData.nilai[existingIndex].komentar = komentar;
+                appData.nilai[existingIndex].updatedAt = new Date().toISOString();
+            } else {
+                appData.nilai.push({
+                    tugasId: tugasId,
+                    nis: nis,
+                    nilai: nilai,
+                    komentar: komentar,
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                });
             }
             
             updateShareUrl();
         }
 
-        window.onclick = function(event) {
-            const modal = document.getElementById('filePreviewModal');
-            if (event.target === modal) {
-                closeFilePreview();
+        function loadNilaiSiswa() {
+            const container = document.getElementById('siswaNilaiList');
+            const nis = appData.currentUser.nis;
+            const nilaiSiswa = appData.nilai.filter(n => n.nis === nis);
+            
+            if (nilaiSiswa.length === 0) {
+                container.innerHTML = '<p style="text-align: center; padding: 20px; color: #666;">Belum ada nilai yang tersedia.</p>';
+                return;
             }
+            
+            let html = '<div class="stats-grid" style="margin-bottom: 20px;">';
+            
+            const totalNilai = nilaiSiswa.reduce((sum, n) => sum + parseInt(n.nilai || 0), 0);
+            const rataRata = nilaiSiswa.length > 0 ? Math.round(totalNilai / nilaiSiswa.length) : 0;
+            const nilaiTertinggi = Math.max(...nilaiSiswa.map(n => parseInt(n.nilai || 0)));
+            const nilaiTerendah = Math.min(...nilaiSiswa.map(n => parseInt(n.nilai || 0)));
+            
+            html += `
+                <div class="stat-card blue">
+                    <div class="label">Rata-rata</div>
+                    <div class="value">${rataRata}</div>
+                </div>
+                <div class="stat-card green">
+                    <div class="label">Tertinggi</div>
+                    <div class="value">${nilaiTertinggi}</div>
+                </div>
+                <div class="stat-card orange">
+                    <div class="label">Terendah</div>
+                    <div class="value">${nilaiTerendah}</div>
+                </div>
+            </div>`;
+            
+            html += '<h3 style="margin-bottom: 15px;">Detail Nilai</h3>';
+            
+            nilaiSiswa.forEach(nilai => {
+                const tugas = appData.tugas.find(t => t.id === nilai.tugasId);
+                if (!tugas) return;
+                
+                const progress = parseInt(nilai.nilai || 0);
+                
+                html += `
+                    <div class="materi-item">
+                        <div class="materi-header">
+                            <div>
+                                <h3 style="margin: 0 0 5px 0;">${tugas.title}</h3>
+                                <p style="margin: 0; color: #666;">Nilai: <strong>${nilai.nilai || 'Belum dinilai'}</strong></p>
+                            </div>
+                            <div class="materi-actions">
+                                <span class="badge ${progress >= 80 ? 'success' : progress >= 60 ? 'warning' : 'danger'}">
+                                    ${progress >= 80 ? 'Baik' : progress >= 60 ? 'Cukup' : 'Perlu Perbaikan'}
+                                </span>
+                            </div>
+                        </div>
+                        ${nilai.komentar ? `<p style="margin: 10px 0;"><strong>Komentar:</strong> ${nilai.komentar}</p>` : ''}
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${progress}%"></div>
+                        </div>
+                        <p style="text-align: center; margin: 5px 0; font-size: 12px; color: #666;">${progress}%</p>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // ==================== FUNGSI STATISTIK ====================
+
+        function updateStatsSiswa() {
+            const nis = appData.currentUser.nis;
+            
+            const absensiSiswa = appData.absensi.filter(a => a.nis === nis);
+            const totalAbsensi = absensiSiswa.length;
+            const hadirCount = absensiSiswa.filter(a => a.status === 'present').length;
+            const kehadiran = totalAbsensi > 0 ? Math.round((hadirCount / totalAbsensi) * 100) : 0;
+            
+            const tugasSiswa = appData.tugas.filter(t => 
+                t.kelas === 'all' || t.kelas === appData.currentUser.kelas
+            );
+            const tugasDikumpulkan = appData.nilai.filter(n => 
+                n.nis === nis && tugasSiswa.some(t => t.id === n.tugasId)
+            ).length;
+            
+            const nilaiSiswa = appData.nilai.filter(n => n.nis === nis);
+            const totalNilai = nilaiSiswa.reduce((sum, n) => sum + parseInt(n.nilai || 0), 0);
+            const rataRata = nilaiSiswa.length > 0 ? Math.round(totalNilai / nilaiSiswa.length) : 0;
+            
+            document.getElementById('siswaKehadiran').textContent = `${kehadiran}%`;
+            document.getElementById('siswaTugasSelesai').textContent = `${tugasDikumpulkan}/${tugasSiswa.length}`;
+            document.getElementById('siswaNilaiRata').textContent = rataRata;
+        }
+
+        function updateGuruStats() {
+            const date = document.getElementById('guruAbsensiDate').value;
+            
+            const presentCount = appData.absensi.filter(a => 
+                a.date === date && a.status === 'present'
+            ).length;
+            
+            document.getElementById('guruPresentCount').textContent = presentCount;
+            
+            const activeTasks = appData.tugas.filter(t => {
+                const deadline = new Date(t.deadline);
+                const now = new Date();
+                return deadline > now;
+            }).length;
+            
+            document.getElementById('guruActiveTasks').textContent = activeTasks;
+            
+            document.getElementById('guruMateriCount').textContent = appData.materi.length;
+        }
+
+        function updateTotalSiswaCount() {
+            let totalSiswa = 0;
+            for (const kelas in studentsData) {
+                totalSiswa += studentsData[kelas].length;
+            }
+            document.getElementById('totalSiswaCount').textContent = totalSiswa;
+        }
+
+        // ==================== FUNGSI SHARING URL ====================
+
+        function updateShareUrl() {
+            const dataToSave = {
+                absensi: appData.absensi,
+                tugas: appData.tugas,
+                materi: appData.materi,
+                nilai: appData.nilai
+            };
+            
+            const jsonData = JSON.stringify(dataToSave);
+            const compressedData = LZString.compressToEncodedURIComponent(jsonData);
+            
+            const baseUrl = window.location.href.split('?')[0];
+            const shareUrl = `${baseUrl}?data=${compressedData}`;
+            
+            document.getElementById('shareUrl').value = shareUrl;
+            document.getElementById('shareUrlGuru').value = shareUrl;
+            
+            window.history.replaceState(null, null, `?data=${compressedData}`);
+        }
+
+        function loadDataFromURL() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const dataParam = urlParams.get('data');
+            
+            if (dataParam) {
+                try {
+                    const jsonData = LZString.decompressFromEncodedURIComponent(dataParam);
+                    
+                    if (jsonData) {
+                        const parsedData = JSON.parse(jsonData);
+                        
+                        if (parsedData.absensi) appData.absensi = parsedData.absensi;
+                        if (parsedData.tugas) appData.tugas = parsedData.tugas;
+                        if (parsedData.materi) appData.materi = parsedData.materi;
+                        if (parsedData.nilai) appData.nilai = parsedData.nilai;
+                        
+                        console.log('Data berhasil dimuat dari URL');
+                    }
+                } catch (error) {
+                    console.error('Error loading data from URL:', error);
+                }
+            }
+        }
+
+        function copyShareUrl() {
+            const urlInput = document.getElementById('shareUrl') || document.getElementById('shareUrlGuru');
+            urlInput.select();
+            document.execCommand('copy');
+            
+            const copyBtn = event.target.closest('.copy-btn');
+            const originalText = copyBtn.innerHTML;
+            
+            copyBtn.innerHTML = '<i class="fas fa-check"></i> URL Disalin!';
+            copyBtn.classList.add('copied');
+            
+            setTimeout(() => {
+                copyBtn.innerHTML = originalText;
+                copyBtn.classList.remove('copied');
+            }, 2000);
+        }
+
+        function shareToWhatsApp() {
+            const url = document.getElementById('shareUrl').value;
+            const text = `Halo! Saya ingin berbagi data pembelajaran dengan Anda:\n${url}`;
+            const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function shareToTelegram() {
+            const url = document.getElementById('shareUrl').value;
+            const text = `Halo! Saya ingin berbagi data pembelajaran dengan Anda:\n${url}`;
+            const telegramUrl = `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(text)}`;
+            window.open(telegramUrl, '_blank');
+        }
+
+        // ==================== FUNGSI BANTUAN ====================
+
+        function formatDate(date) {
+            return date.toLocaleDateString('id-ID', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        function handleFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const fileSize = (file.size / 1024 / 1024).toFixed(2);
+                document.getElementById('fileName').textContent = file.name;
+                document.getElementById('fileSize').textContent = `${fileSize} MB`;
+                document.getElementById('filePreview').style.display = 'block';
+                
+                const fileIcon = document.getElementById('fileIcon');
+                if (file.type.includes('pdf')) {
+                    fileIcon.className = 'fas fa-file-pdf';
+                    fileIcon.style.color = '#ef4444';
+                } else if (file.type.includes('word') || file.type.includes('document')) {
+                    fileIcon.className = 'fas fa-file-word';
+                    fileIcon.style.color = '#3b82f6';
+                } else if (file.type.includes('powerpoint') || file.type.includes('presentation')) {
+                    fileIcon.className = 'fas fa-file-powerpoint';
+                    fileIcon.style.color = '#f59e0b';
+                } else {
+                    fileIcon.className = 'fas fa-file';
+                    fileIcon.style.color = '#6b7280';
+                }
+            }
+        }
+
+        function handleMateriFileSelect(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const fileSize = (file.size / 1024 / 1024).toFixed(2);
+                document.getElementById('materiFileName').textContent = file.name;
+                document.getElementById('materiFileSize').textContent = `${fileSize} MB`;
+                document.getElementById('materiFilePreview').style.display = 'block';
+                
+                const fileIcon = document.getElementById('materiFileIcon');
+                if (file.type.includes('pdf')) {
+                    fileIcon.className = 'fas fa-file-pdf';
+                    fileIcon.style.color = '#ef4444';
+                } else if (file.type.includes('word') || file.type.includes('document')) {
+                    fileIcon.className = 'fas fa-file-word';
+                    fileIcon.style.color = '#3b82f6';
+                } else if (file.type.includes('powerpoint') || file.type.includes('presentation')) {
+                    fileIcon.className = 'fas fa-file-powerpoint';
+                    fileIcon.style.color = '#f59e0b';
+                } else if (file.type.includes('image')) {
+                    fileIcon.className = 'fas fa-file-image';
+                    fileIcon.style.color = '#10b981';
+                } else {
+                    fileIcon.className = 'fas fa-file';
+                    fileIcon.style.color = '#6b7280';
+                }
+            }
+        }
+
+        function removeFile() {
+            document.getElementById('tugasFile').value = '';
+            document.getElementById('filePreview').style.display = 'none';
+        }
+
+        function removeMateriFile() {
+            document.getElementById('materiFile').value = '';
+            document.getElementById('materiFilePreview').style.display = 'none';
+        }
+
+        // Fungsi untuk modal tugas
+        function openTugasModal(tugasId) {
+            document.getElementById('tugasModal').style.display = 'flex';
+        }
+
+        function closeTugasModal() {
+            document.getElementById('tugasModal').style.display = 'none';
+        }
+
+        // Fungsi untuk modal nilai
+        function openNilaiModal(tugasId, nis) {
+            const nilaiData = appData.nilai.find(n => 
+                n.tugasId === tugasId && n.nis === nis
+            );
+            
+            if (nilaiData) {
+                document.getElementById('modalNilai').value = nilaiData.nilai;
+                document.getElementById('modalKomentar').value = nilaiData.komentar;
+            } else {
+                document.getElementById('modalNilai').value = '';
+                document.getElementById('modalKomentar').value = '';
+            }
+            
+            document.getElementById('nilaiModal').style.display = 'flex';
+        }
+
+        function closeNilaiModal() {
+            document.getElementById('nilaiModal').style.display = 'none';
         }
     </script>
 </body>
